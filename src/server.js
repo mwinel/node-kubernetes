@@ -42,7 +42,8 @@ app.get("/metrics", (req, res) => {
 
 app.get("/status", (req, res) => {
   res.json({
-    status: "running ok",
+    status: 200,
+    message: "ok",
   });
 });
 
