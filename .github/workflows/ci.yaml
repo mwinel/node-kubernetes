@@ -32,3 +32,12 @@ jobs:
           echo $COMMIT_SHA
           # push docker image
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/node-kubernetes-web:${COMMIT_SHA}
+      
+      - name: Trigger GitOps Workflow
+        if: success()
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITOPS_PAT }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/mwinel/argocd-gitops-test/actions/workflows/image-updater.yaml/dispatches \
+            -d '{"ref":"main"}'
