@@ -31,5 +31,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/node-kubernetes-web:${{ steps.sha.outputs.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/node-kubernetes-web:${{ github.sha }}
   
