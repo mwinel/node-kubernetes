@@ -17,3 +17,5 @@ jobs:
         run: |
           COMMIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
           echo $COMMIT_SHA
+          # build docker image
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/node-kubernetes-web:${COMMIT_SHA} .
