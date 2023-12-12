@@ -16,7 +16,8 @@ jobs:
       - name: Extract short SHA
         id: sha
         run: echo "::set-output name=sha::$(git rev-parse --short ${{ github.sha }})"
-        run: echo {{ github.sha }}
+      
+      - name: Echo short SHA
         run: echo ${{ steps.sha.outputs.sha }}
 
       - name: Set up Docker Buildx
